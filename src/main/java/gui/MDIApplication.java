@@ -146,7 +146,12 @@ public class MDIApplication extends javax.swing.JFrame {
         helpMenu.setText("Option");
 
         contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Rechercher un Abonné");
+        contentMenuItem.setText("graphe");
+        contentMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contentMenuItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(contentMenuItem);
 
         menuBar.add(helpMenu);
@@ -227,6 +232,21 @@ public class MDIApplication extends javax.swing.JFrame {
     desktopPane.add(a);
     a.setVisible(true);
     }//GEN-LAST:event_AbonnementsMenuItemActionPerformed
+
+    private void contentMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentMenuItemActionPerformed
+        // TODO add your handling code here:
+        closeAllInternalFrames();
+
+    if (desktopPane == null) {
+        System.out.println("Erreur : desktopPane n'est pas initialisé !");
+        return;
+    }
+
+    Graphe g = new Graphe();
+    desktopPane.add(g);
+    g.setVisible(true);
+        
+    }//GEN-LAST:event_contentMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

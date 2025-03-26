@@ -342,7 +342,7 @@ private void loadEtudiants() {
         jLabel6.setText("Liste des abonnement");
 
         listAbonnement.setBackground(new java.awt.Color(204, 204, 255));
-        listAbonnement.setForeground(new java.awt.Color(204, 204, 255));
+        listAbonnement.setForeground(new java.awt.Color(255, 255, 255));
         listAbonnement.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -453,21 +453,24 @@ private void loadEtudiants() {
     private void saveAbonnementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAbonnementActionPerformed
         // TODO add your handling code here:
      try {
-        
         String busSelection = (String) listBus.getSelectedItem();
         String etudiantSelection = (String) listEtudiant.getSelectedItem();
-        Date date = new Date(dateAbonnementt.getDate().getTime()); 
 
-        if (busSelection == null || etudiantSelection == null || date == null) {
-            JOptionPane.showMessageDialog(this, "Veuillez sélectionner un bus, un étudiant et une date valide.");
+        if (busSelection == null || etudiantSelection == null) {
+            JOptionPane.showMessageDialog(this, "Veuillez sélectionner un bus et un étudiant.");
             return;
         }
 
-       
-        int busId = Integer.parseInt(busSelection.trim().split(" ")[0]);
-        int etudiantId = Integer.parseInt(etudiantSelection.trim().split(" ")[0]);
+        Date date = new Date(dateAbonnementt.getDate().getTime());
 
-        
+        if (dateAbonnementt.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Veuillez sélectionner une date.");
+            return;
+        }
+
+        int busId = Integer.parseInt(busSelection.split(" - ")[0]);
+        int etudiantId = Integer.parseInt(etudiantSelection.split(" - ")[0]);
+
         Bus bus = busService.findById(busId);
         Etudiant etudiant = etudiantService.findById(etudiantId);
 
@@ -476,17 +479,26 @@ private void loadEtudiants() {
             return;
         }
 
-        
-        AbonnementTransport abonnement = new AbonnementTransport(bus, etudiant, date);
-        abonnementService.create(abonnement); 
+        System.out.println("Bus ID: " + busId);
+        System.out.println("Etudiant ID: " + etudiantId);
+        System.out.println("Date: " + date);
 
-       loadAbonnements();
+        AbonnementTransport abonnement = new AbonnementTransport(bus, etudiant, date);
+        boolean success = abonnementService.create(abonnement);
+
+        if (!success) {
+            JOptionPane.showMessageDialog(this, "Erreur lors de l'enregistrement de l'abonnement.");
+            return;
+        }
+
+        loadAbonnements(); // Mise à jour des abonnements dans la vue
         JOptionPane.showMessageDialog(this, "Abonnement ajouté avec succès !");
+
     } catch (Exception e) {
         e.printStackTrace();
         JOptionPane.showMessageDialog(this, "Erreur lors de l'enregistrement de l'abonnement.");
     }
-
+    
     }//GEN-LAST:event_saveAbonnementActionPerformed
 
     private void saveAbonnementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveAbonnementMouseClicked

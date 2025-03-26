@@ -104,6 +104,11 @@ public class FilterByBus extends javax.swing.JInternalFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
         jPanel1.setBackground(new java.awt.Color(238, 233, 233));
 
         jLabel3.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N

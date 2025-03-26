@@ -1,76 +1,81 @@
-Gestion des Transports Universitaires
-🚍 UniTransport – Une plateforme pour la gestion des bus et des abonnements étudiants
+# 🚍 UniTransport – Une plateforme pour la gestion des bus et des abonnements étudiants
 
-📁 Table des matières
-🗂 Contexte
-❓ Problématique
-🎯 Objectif
-📊 Diagrammes
-🗃 Tables de Données
-✨ Fonctionnalités principales
-🔍 Requêtes SQL
-🏛 Architecture
-🛠 Technologies Utilisées
-🎥 Démo Vidéo
-📁 .exe
+## 📁 Table des matières
+- [🗂 Contexte](#contexte)
+- [❓ Problématique](#problématique)
+- [🎯 Objectif](#objectif)
+- [📊 Diagrammes](#diagrammes)
+- [🗃 Tables de Données](#tables-de-données)
+- [✨ Fonctionnalités principales](#fonctionnalités-principales)
+- [🏛 Architecture](#architecture)
+- [🛠 Technologies Utilisées](#technologies-utilisées)
+- [🎥 Démo Vidéo](#démo-vidéo)
+- [🔍 Requêtes SQL](#requêtes-sql)
+- [📁 .exe](#exe)
 
-🗂 Contexte
+## 🗂 Contexte
 Dans un cadre universitaire, la gestion du transport des étudiants est un enjeu majeur. Une mauvaise organisation peut entraîner des retards, un manque d'efficacité et des désagréments pour les étudiants et l'administration. La gestion traditionnelle sur papier ou avec des fichiers statiques est souvent source d'erreurs et peu optimisée.
 
 Une solution informatisée permettrait de simplifier la gestion des bus, des abonnements et d'améliorer l'expérience des étudiants en garantissant un suivi précis.
 
-❓ Problématique
+## ❓ Problématique
 Les universités font face à plusieurs défis dans la gestion des transports étudiants :
 
-Attribution inefficace des places dans les bus
-
-Manque de suivi des abonnements
-
-Difficulté d'accès aux informations sur les bus et abonnés
-
-Expérience utilisateur peu intuitive pour l’administration
+- Attribution inefficace des places dans les bus
+- Manque de suivi des abonnements
+- Difficulté d'accès aux informations sur les bus et abonnés
+- Expérience utilisateur peu intuitive pour l’administration
 
 Un système numérique permettrait une gestion plus efficace et une meilleure satisfaction des utilisateurs.
 
-🎯 Objectif
+## 🎯 Objectif
 L'objectif du projet UniTransport est de développer une application pour faciliter la gestion des transports universitaires.
 
 L’application doit permettre :
-✅ Un suivi précis des abonnements aux bus
-✅ Une gestion optimisée des étudiants et des bus
-✅ Des outils de recherche et de filtrage avancés
-✅ Une visualisation claire des abonnements et des disponibilités
+- ✅ Un suivi précis des abonnements aux bus
+- ✅ Une gestion optimisée des étudiants et des bus
+- ✅ Des outils de recherche et de filtrage avancés
+- ✅ Une visualisation claire des abonnements et des disponibilités
 
-📊 Diagrammes
-📌 Diagramme Use Case : (Représentation des interactions entre étudiants, administrateurs et système)
-📌 Diagramme de Classe : (Structure des entités principales : Bus, Étudiant, Abonnement)
+## 📊 Diagrammes
+### 📌 Diagramme Use Case![Image](https://github.com/user-attachments/assets/90f139df-c6c2-48a3-8a67-7f6e79934a36)
 
-🗃 Tables de Données
-1️⃣ Bus (id, immatriculation, nombre_places)
-2️⃣ Étudiant (id, nom, prénom, email)
-3️⃣ AbonnementTransport (id, bus_id, etudiant_id, date_abonnement)
-4️⃣ User (login, password)
+### 📌 Diagramme de Classe
+![Image](https://github.com/user-attachments/assets/cdd1dcf7-bb3f-4861-aef5-dbda209f1763)
 
-✨ Fonctionnalités Principales
-1️⃣ Gestion des Bus
-🚍 Ajouter un bus (saisie de l'immatriculation et du nombre de places)
-🚍 Modifier les informations d'un bus
-🚍 Supprimer un bus
+## 🗃 Tables de Données
+1️⃣ **Bus** (`id`, `immatriculation`, `nombre_places`)  
+2️⃣ **Étudiant** (`id`, `nom`, `prénom`, `email`)  
+3️⃣ **AbonnementTransport** (`id`, `bus_id`, `etudiant_id`, `date_abonnement`)  
+4️⃣ **User** (`login`, `password`)
 
-2️⃣ Gestion des abonnements étudiants
-🎫 Abonner un étudiant à un bus
-🎫 Désinscrire un étudiant
+## ✨ Fonctionnalités principales
+### 1️⃣ Gestion des Bus
+- 🚍 Ajouter un bus (saisie de l'immatriculation et du nombre de places)
+- 🚍 Modifier les informations d'un bus
+- 🚍 Supprimer un bus
 
-3️⃣ Recherche et filtrage
-🔎 Trouver un étudiant par nom ou email
-🔎 Lister les abonnements d’un étudiant
-🔎 Voir la liste des étudiants abonnés à un bus
+### 2️⃣ Gestion des abonnements étudiants
+- 🎫 Abonner un étudiant à un bus
+- 🎫 Désinscrire un étudiant
 
-🔍 Requêtes SQL
-Création des tables
-sql
-Copy
-Edit
+### 3️⃣ Recherche et filtrage
+- 🔎 Lister les abonnements d’un étudiant
+- 🔎 Voir la liste des étudiants abonnés à un bus
+## 🏛 Architecture
+![Image](https://github.com/user-attachments/assets/18fdca9a-8df8-4772-9e15-a4700adc3b37)
+## 🛠 Technologies Utilisées
+- 💻 **Java Swing** : Utilisé pour développer l'interface graphique de l'application. Permet de créer une interface conviviale et réactive.
+- 📊 **MySQL** : Base de données relationnelle utilisée pour stocker les informations sur les bus, les étudiants et les abonnements.
+- 🔗 **JDBC** : Utilisé pour connecter l'application Java à la base de données MySQL et gérer les opérations de lecture et d'écriture.
+- 🛠 **NetBeans** : IDE de développement utilisé pour écrire, déboguer et exécuter le code Java du projet.
+- 🗂 **phpMyAdmin** : Outil de gestion de la base de données MySQL via une interface web. Utilisé pour configurer et maintenir la base de données.
+- 🎨 **Icons8** : Bibliothèque d'icônes utilisée pour embellir l'interface avec des images de qualité professionnelle.
+## 🎥 Démo Vidéo
+## 🔍 Requêtes SQL
+### Création des tables
+
+```sql
 CREATE TABLE Bus (
     id INT NOT NULL AUTO_INCREMENT,
     immatriculation VARCHAR(20) NOT NULL,
@@ -87,7 +92,6 @@ CREATE TABLE Etudiant (
 );
 
 CREATE TABLE AbonnementTransport (
-    id INT NOT NULL AUTO_INCREMENT,
     bus_id INT NOT NULL,
     etudiant_id INT NOT NULL,
     date_abonnement DATE DEFAULT CURRENT_DATE,
@@ -101,26 +105,4 @@ CREATE TABLE User (
     password VARCHAR(100) NOT NULL,
     PRIMARY KEY (login)
 );
-🏛 Architecture
-L’application suit une structure MVC (Modèle-Vue-Contrôleur) :
 
-ma.projet.utils → Gestion de la connexion à la base de données
-
-ma.projet.entities → Classes des entités Bus, Etudiant, AbonnementTransport
-
-ma.projet.services → DAO pour la gestion des opérations CRUD
-
-ma.projet.dao → Interface générique IDao<T>
-
-🛠 Technologies Utilisées
-💻 Java Swing (Interface graphique)
-📊 MySQL (Base de données)
-🔗 JDBC (Connexion base de données)
-🛠 NetBeans (IDE de développement)
-🗂 phpMyAdmin (Gestion SQL)
-🎨 Icons8 (Bibliothèque d’icônes)
-
-🎥 Démo Vidéo
-🚀 Une démonstration interactive montrant la gestion des bus et abonnements étudiants
-
-📁 Version .exe disponible pour tester l’application en local.

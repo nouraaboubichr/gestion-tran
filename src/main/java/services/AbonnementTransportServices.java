@@ -27,16 +27,19 @@ public class AbonnementTransportServices implements IDao<AbonnementTransport> {
     @Override
     public boolean create(AbonnementTransport abonnement) {
         try {
-            String query = "INSERT INTO abonnement_transport (bus_id, etudiant_id, date_abonnement) VALUES (?, ?, ?)";
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setInt(1, abonnement.getBus().getId());  
-            ps.setInt(2, abonnement.getEtudiant().getId());  
-            ps.setDate(3, abonnement.getDateAbonnement());
-            return ps.executeUpdate() > 0;
-        } catch (SQLException ex) {
-            System.out.println("Erreur lors de l'ajout : " + ex.getMessage());
-            return false;
-        }
+        String query = "INSERT INTO abonnement_transport (bus_id, etudiant_id, date_abonnement) VALUES (?, ?, ?)";
+        PreparedStatement ps = connection.prepareStatement(query);
+        ps.setInt(1, abonnement.getBus().getId());  
+        ps.setInt(2, abonnement.getEtudiant().getId());  
+        ps.setDate(3, abonnement.getDateAbonnement());
+        int rowsAffected = ps.executeUpdate();
+        
+        // Vérifie si des lignes ont été affectées (l'insertion est réussie)
+        return rowsAffected > 0;
+    } catch (SQLException ex) {
+        System.out.println("Erreur lors de l'ajout : " + ex.getMessage());
+        return false;
+    }
     }
 
     @Override

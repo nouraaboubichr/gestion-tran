@@ -4,6 +4,16 @@
  */
 package gui;
 
+import beans.User;
+import com.github.jurajburian.mailer.MimeMessage;
+import com.google.protobuf.Message;
+import java.util.Properties;
+import javax.mail.Authenticator;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
 import javax.swing.JOptionPane;
 import services.UserService;
 
@@ -41,7 +51,7 @@ public class Main extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,9 +92,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel7.setText("mot de passe oublie?");
+        jButton2.setForeground(new java.awt.Color(204, 204, 204));
+        jButton2.setText("mot de passe oublie?");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,8 +119,8 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jTextField1)
                             .addComponent(jPasswordField1)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                            .addComponent(jButton2))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
@@ -133,8 +147,8 @@ public class Main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addGap(14, 14, 14)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -173,6 +187,37 @@ public class Main extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String login = JOptionPane.showInputDialog(this, "Entrez votre login :");
+
+        if (login != null && !login.isEmpty()) {
+            UserService userService = new UserService();
+            User user = userService.findUserByLogin(login);
+
+            if (user != null) {
+                String securityAnswer = JOptionPane.showInputDialog(this,
+                        "Question secrète : " + user.getSecurityQuestion() + "\n\nEntrez votre réponse :");
+
+                if (securityAnswer != null && !securityAnswer.isEmpty()) {
+                    // Utilisation de la méthode resetPasswordBySecurityQuestion modifiée
+                    if (userService.resetPasswordBySecurityQuestion(login, securityAnswer)) {
+                        // L'envoi de l'e-mail est géré dans resetPasswordBySecurityQuestion
+                        JOptionPane.showMessageDialog(this, "Un nouveau mot de passe a été envoyé à votre adresse e-mail.");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Réponse incorrecte à la question secrète.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Veuillez entrer la réponse à la question secrète.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Utilisateur non trouvé.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Veuillez entrer votre login.");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -210,13 +255,13 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
