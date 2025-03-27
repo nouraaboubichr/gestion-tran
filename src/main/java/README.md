@@ -10,6 +10,7 @@
 - [🏛 Architecture](#architecture)
 - [🛠 Technologies Utilisées](#technologies-utilisées)
 - [🎥 Démo Vidéo](#démo-vidéo)
+- [🎥 Démo Vidéo .exe](#démo-vidéo-exe)
 - [🔍 Requêtes SQL](#requêtes-sql)
 - [📁 .exe](#exe)
 
@@ -73,6 +74,7 @@ L’application doit permettre :
 - 🎨 **Icons8** : Bibliothèque d'icônes utilisée pour embellir l'interface avec des images de qualité professionnelle.
 ## 🎥 Démo Vidéo
 https://github.com/user-attachments/assets/07a1d109-5c96-4773-9970-d1d4aa53dd64
+## 🎥 Démo Vidéo .exe
 ## 🔍 Requêtes SQL
 ### Création des tables
 
