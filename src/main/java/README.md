@@ -75,6 +75,7 @@ L’application doit permettre :
 ## 🎥 Démo Vidéo
 https://github.com/user-attachments/assets/07a1d109-5c96-4773-9970-d1d4aa53dd64
 ## 🎥 Démo Vidéo .exe
+https://github.com/user-attachments/assets/a745c531-6b98-471f-a285-e5ff67bed26b
 ## 🔍 Requêtes SQL
 ### Création des tables
 
