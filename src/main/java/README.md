@@ -72,6 +72,7 @@ L’application doit permettre :
 - 🗂 **phpMyAdmin** : Outil de gestion de la base de données MySQL via une interface web. Utilisé pour configurer et maintenir la base de données.
 - 🎨 **Icons8** : Bibliothèque d'icônes utilisée pour embellir l'interface avec des images de qualité professionnelle.
 ## 🎥 Démo Vidéo
+https://github.com/user-attachments/assets/07a1d109-5c96-4773-9970-d1d4aa53dd64
 ## 🔍 Requêtes SQL
 ### Création des tables
 
